@@ -9,7 +9,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
-import java.util.Calendar;
+import java.time.Instant;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -19,7 +20,7 @@ public class Main {
   static String[] courses = new String[100];
   static Float[] grades = new Float[100];
   static Float[] balancingGrades = new Float[100];
-  static String[] savedBalanceSheets = new String[100];
+  static Long[] savedBalanceSheets = new Long[100];
   static String[] savedBalanceSheetFiles = new String[100];
   static int noSaved = 0;
   static Float expectedGpa = null;
@@ -164,7 +165,7 @@ public class Main {
   }
 
   static void writeSavedBalanceSheets(
-      String[] savedTimes, String[] savedFilenames, int noSaves) {
+      Long[] savedTimes, String[] savedFilenames, int noSaves) {
 
     StringBuilder sb = new StringBuilder();
     sb.append(noSaves);
@@ -179,7 +180,7 @@ public class Main {
   }
 
   static int readSavedBalanceSheets(
-      String[] savedTimes, String[] savedFilenames) {
+      Long[] savedTimes, String[] savedFilenames) {
     int noSaves = 0;
     String courseFileContent = readFromFile(SAVED_BALANCE_SHEETS_FILENAME);
     for (int i = 0; i < grades.length; i++) {
@@ -198,7 +199,7 @@ public class Main {
       String line = courseFileContentLines[i + 1];
       String[] lineContent = line.split("\\$");
       if (lineContent.length == 2) {
-        savedTimes[i] = lineContent[0];
+        savedTimes[i] = Long.parseLong(lineContent[0]);
         savedFilenames[i] = lineContent[1];
       }
     }
@@ -260,6 +261,14 @@ public class Main {
 
   static int printMenu(Scanner scanner, String[] options, boolean isMainMenu) {
     return printMenu(scanner, options, options.length, isMainMenu);
+  }
+
+  static int printSavedBalanceSheetMenu(Scanner scanner, boolean isMainMenu) {
+    String[] savedBalanceSheetStrings = new String[savedBalanceSheets.length];
+    for (int i = 0; i < noSaved; i++) {
+      savedBalanceSheetStrings[i] = Date.from(Instant.ofEpochMilli(savedBalanceSheets[i])).toString();
+    }
+    return printMenu(scanner, savedBalanceSheetStrings, noSaved, isMainMenu);
   }
 
   static int printMenu(Scanner scanner, String[] options, int length, boolean isMainMenu) {
@@ -697,7 +706,7 @@ public class Main {
             currentBalanceSheetFileName = newFileName;
             noSaved++;
             savedBalanceSheetFiles[thisSheetIndex] = newFileName;
-            savedBalanceSheets[thisSheetIndex] = Calendar.getInstance().getTime().toString();
+            savedBalanceSheets[thisSheetIndex] = Instant.now().toEpochMilli();
             writeSavedBalanceSheets(savedBalanceSheets, savedBalanceSheetFiles, noSaved);
           }
           System.out.println("Balance sheet has been saved");
@@ -741,7 +750,7 @@ public class Main {
     System.out.println("List of saved balance sheets");
     System.out.println("            ----            ");
     int userChoise = 0;
-    userChoise = printMenu(scanner, savedBalanceSheets, noSaved, false);
+    userChoise = printSavedBalanceSheetMenu(scanner, false);
     if (userChoise > 0) {
       cleanConsole();
       String[] savedCourses = new String[100];
@@ -764,7 +773,7 @@ public class Main {
     System.out.println("List of saved balance sheets");
     System.out.println("            ----            ");
     int userChoise = 0;
-    userChoise = printMenu(scanner, MANAGE_SAVED_BALANCE_SHEET_OPTIONS, false);
+    userChoise = printSavedBalanceSheetMenu(scanner, false);
     if (userChoise > 0) {
       String removingSaved = savedBalanceSheetFiles[userChoise];
       for (int i = userChoise - 1; i < noSaved; i++) {
