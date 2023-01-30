@@ -13,15 +13,19 @@ import com.netcompany.entity.BalanceSheet;
 import com.netcompany.entity.BalancingCourse;
 import com.netcompany.entity.Course;
 import com.netcompany.exception.ValidationException;
+import com.netcompany.repository.CourseRepository;
 import com.netcompany.repository.GpaBalanceSheetRepository;
+import com.netcompany.repository.impl.CourseRepositoryImpl;
 import com.netcompany.repository.impl.GpaBalanceSheetRepositoryImpl;
 import com.netcompany.service.GpaBalancingService;
 
 public class GpaBalancingServiceImpl implements GpaBalancingService {
     GpaBalanceSheetRepository gpaBalanceSheetRepository = new GpaBalanceSheetRepositoryImpl();
+    CourseRepository courseRepository = new CourseRepositoryImpl();
 
     @Override
-    public BalanceSheet createNewBalanceSheet(List<Course> courses, float expectedGpa) {
+    public BalanceSheet createNewBalanceSheet(float expectedGpa) {
+        List<Course> courses = this.courseRepository.getAll();
         BalanceSheet balanceSheet = new BalanceSheet();
         List<BalancingCourse> balancingCourses = new ArrayList<>();
         for (Course course : courses) {

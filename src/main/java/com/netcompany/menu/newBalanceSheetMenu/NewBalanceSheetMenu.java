@@ -16,7 +16,6 @@ import com.netcompany.service.impl.GpaBalancingServiceImpl;
 
 public class NewBalanceSheetMenu extends AbstractMenu implements MenuItem {
     private GpaBalancingService gpaBalancingService = new GpaBalancingServiceImpl();
-    private CourseService courseService = new CourseServiceImpl();
     private BalanceSheet currentBalanceSheet;
     private UpdateBalancingExpectedGpaFeature updateBalancingExpectedGpaFeature;
     private ShowBalanceSheetDetailFeature showBalanceSheetDetailFeature;
@@ -40,8 +39,7 @@ public class NewBalanceSheetMenu extends AbstractMenu implements MenuItem {
 
     @Override
     public void launch() {
-        List<Course> courses = this.courseService.getAll();
-        this.currentBalanceSheet = this.gpaBalancingService.createNewBalanceSheet(courses, -1);
+        this.currentBalanceSheet = this.gpaBalancingService.createNewBalanceSheet(-1);
         this.updateMenuItemContext();
         updateBalancingExpectedGpaFeature.launch();
         Float expectedGpa = this.currentBalanceSheet.getExpectedGpa();

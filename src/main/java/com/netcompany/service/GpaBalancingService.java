@@ -4,11 +4,10 @@ import java.util.List;
 
 import com.netcompany.dto.ValidationResult;
 import com.netcompany.entity.BalanceSheet;
-import com.netcompany.entity.Course;
 import com.netcompany.exception.ValidationException;
 
 public interface GpaBalancingService {
-    BalanceSheet createNewBalanceSheet(List<Course> courses, float expectedGpa);
+    BalanceSheet createNewBalanceSheet(float expectedGpa);
 
     float calculateCurrentGpa(BalanceSheet balanceSheet);
 
