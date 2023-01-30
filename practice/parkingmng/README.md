@@ -17,11 +17,7 @@ Parking fee for residences and employees is a fix amount and charged monthly. Fo
 
 ## Requirements
 Use object-oriented programming to build a simple parking management application.
-* Identify objects, their properties and methods name
+* Identify the customers, vehicles that application supports.
+* Identify objects, their properties and methods name.
 * Describe relationship of objects, object hierarchy.
-* Describe the detail of check-in and check-out method.
-
-Extension:
-* System should be able to print the bill for visitor if they need.
-* System should support other payment method beside cash.
-
+* Describe detail of check-in and check-out flow/steps.
