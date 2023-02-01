@@ -4,3 +4,4 @@ courses.txt
 target/*
 .vscode
 node_modules
+public
