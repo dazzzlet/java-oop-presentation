@@ -1,0 +1,127 @@
+import {
+  IntroductionLayout,
+  WhiteColumnLayout,
+  WhiteLayout,
+  Image,
+  netcompanyTheme,
+} from "netcompany-mdx-slide";
+import { Head } from "mdx-deck";
+import nlntImage from "./assets/nlnt.jpg";
+import pctImage from "./assets/pct.jpg";
+import netcompanyMap from "./assets/netcompany-map-2.png";
+import netcompanyIndex from "./assets/netcompany-index.png";
+import netcompanyService from "./assets/netcompany-service.png";
+import redDash from "./assets/red-dash.png";
+
+export const theme = netcompanyTheme;
+
+<Head>
+  <title>JAVA OOP ORIENTATION</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800;900&family=Nunito&family=Varela+Round&display=swap"
+    rel="stylesheet"
+  />
+</Head>
+
+<IntroductionLayout title={"JAVA OOP\nORIENTATION"} department={"CoEs"} />
+
+---
+
+<WhiteLayout title={"Agenda"}>
+
+- Introduction.
+- Daily communication.
+
+</WhiteLayout>
+
+---
+
+<WhiteColumnLayout title={"Introduction"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+
+<LayoutColumn>
+
+### Phan Cong Thuc
+
+- 1.
+- 2.
+- 3.
+- 4.
+
+</LayoutColumn>
+<LayoutColumn>
+
+<img src={pctImage} alt="pct" />
+
+</LayoutColumn>
+
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"Introduction"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+
+<LayoutColumn>
+
+### Nguyen Le Nhat Truong
+
+- B.Sc in Software Engineering by FPT Uni.
+- 9 years of working experience in IT industry.
+- I started in Netcompany in November 2020 as a consultant:
+  - Developer in a Web application project.
+  - Team lead and software architect.
+- Today I’m the Senior Architect for Netcompany Vietnam.
+
+</LayoutColumn>
+<LayoutColumn>
+
+<img src={nlntImage} alt="nlnt" />
+
+</LayoutColumn>
+
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"Netcompany at a glance"} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+
+<LayoutColumn fontSize={"0.7em"} fontFamily={"Varela Round"}>
+
+Netcompany is one of Europe’s fastest growing and most successful IT services companies, leading the way in showing how digital transformation can create strong, sustainable societies, successful companies and better lives for us all.
+
+Our ambition is to become the market leader within IT services in Europe. The acquisition of Intrasoft in 2021 has strengthened our foundation to achieve that ambition – further expanding our portfolio of platforms and unique expertise across sectors with a global headcount of +6,500 talented employees.
+
+By building flexible, scalable and secure digital platforms, Netcompany is positioned to help Europe thrive through a decade of massive digitisation.
+
+<img
+  src={netcompanyIndex}
+  style={{ maxWidth: "100%" }}
+  alt="netcompany-index"
+/>
+
+</LayoutColumn>
+<LayoutColumn>
+
+<img src={netcompanyMap} style={{ width: "100%" }} alt="netcompany" />
+
+</LayoutColumn>
+
+</WhiteColumnLayout>
+
+---
+
+<WhiteLayout title={"An active end-to-end service provider"}>
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  }}
+>
+  <img src={netcompanyService} style={{ width: "100%" }} alt="netcompany" />
+</div>
+
+</WhiteLayout>
