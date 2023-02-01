@@ -1,17 +1,33 @@
 import {
   IntroductionLayout,
+  CodeLayout,
   WhiteColumnLayout,
   WhiteLayout,
   Image,
+  SectionHeadLayout,
+  ListerSteps,
+  SwitcherSteps,
   netcompanyTheme,
 } from "netcompany-mdx-slide";
-import { Head } from "mdx-deck";
+import { Head, Steps } from "mdx-deck";
+import "prismjs/components/prism-java";
+
 import nlntImage from "./assets/nlnt.jpg";
 import pctImage from "./assets/pct.jpg";
 import netcompanyMap from "./assets/netcompany-map-2.png";
 import netcompanyIndex from "./assets/netcompany-index.png";
 import netcompanyService from "./assets/netcompany-service.png";
+import programmingParadigms from "./assets/programming_paradigms.png";
+import Dazzle_icon from "./assets/Dazzle_icon.webp";
+import Huskar_icon from "./assets/Huskar_icon.webp";
 import redDash from "./assets/red-dash.png";
+import feature1 from "./assets/feature/feature1.png";
+import feature2 from "./assets/feature/feature2.png";
+import feature3 from "./assets/feature/feature3.png";
+import feature4 from "./assets/feature/feature4.png";
+import feature5 from "./assets/feature/feature5.png";
+import feature6 from "./assets/feature/feature6.png";
+import feature7 from "./assets/feature/feature7.png";
 
 export const theme = netcompanyTheme;
 
@@ -32,7 +48,12 @@ export const theme = netcompanyTheme;
 <WhiteLayout title={"Agenda"}>
 
 - Introduction.
-- Daily communication.
+- Programming paradigms.
+- OOP 101.
+- The case study.
+- Example from real projects.
+- Summary.
+- Practical.
 
 </WhiteLayout>
 
@@ -69,9 +90,9 @@ export const theme = netcompanyTheme;
 - B.Sc in Software Engineering by FPT Uni.
 - 9 years of working experience in IT industry.
 - I started in Netcompany in November 2020 as a consultant:
-  - Developer in a Web application project.
+  - Developer in a Web application project.
   - Team lead and software architect.
-- Today I’m the Senior Architect for Netcompany Vietnam.
+- Today I'm the Senior Architect for Netcompany Vietnam.
 
 </LayoutColumn>
 <LayoutColumn>
@@ -125,3 +146,210 @@ By building flexible, scalable and secure digital platforms, Netcompany is posit
 </div>
 
 </WhiteLayout>
+
+---
+
+<SectionHeadLayout
+  title={"Programming paradigms"}
+  backgroundImage={programmingParadigms}
+/>
+
+---
+
+<WhiteLayout title={"Programming paradigms"}>
+
+</WhiteLayout>
+
+---
+
+<SectionHeadLayout title={"OOP 101"} />
+
+---
+
+<WhiteLayout title={"OOP 101"}>
+
+</WhiteLayout>
+
+---
+
+<SectionHeadLayout title={"The case study"} />
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+
+<LayoutColumn>
+
+### Context
+
+Greeting Dazzle the Coder
+
+<ListerSteps>
+
+- A junior student who have very good programming skill
+
+- He has a cool project to manage his own GPA
+
+- He just finished his OOP course in the last semester
+
+</ListerSteps>
+
+</LayoutColumn>
+<LayoutColumn>
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "start",
+    paddingTop: "2em",
+    flex: 1,
+    width: "100%",
+  }}
+>
+  <img src={Dazzle_icon} alt="dazzle" />
+</div>
+
+</LayoutColumn>
+
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+
+<LayoutColumn>
+
+### Context
+
+Meet his GPA management app:
+
+<ListerSteps showFirstItem={true}>
+
+- A console application writen in JAVA
+- Allow student manage their courses
+- Allow student to input or clean grade for courses and view them
+- Create a GPA balance sheet base on their current GPA and their expected
+- Allow student to save manage their adjusted balance sheets
+- They can view or clean a saved sheet
+- A cool tool to planning for a new semester
+
+</ListerSteps>
+
+</LayoutColumn>
+<LayoutColumn>
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "start",
+    paddingTop: "2em",
+    flex: 1,
+    width: "100%",
+  }}
+>
+  <SwitcherSteps>
+    <img src={feature1} alt="dazzle" />
+    <img src={feature2} alt="dazzle" />
+    <img src={feature3} alt="dazzle" />
+    <img src={feature4} alt="dazzle" />
+    <img src={feature5} alt="dazzle" />
+    <img src={feature6} alt="dazzle" />
+    <img src={feature7} alt="dazzle" />
+  </SwitcherSteps>
+</div>
+
+</LayoutColumn>
+
+</WhiteColumnLayout>
+
+---
+
+<CodeLayout title={"The case study"}>
+
+```java 795:827 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 586:614 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 616:644 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 665:722 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 724:746 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+</CodeLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
+
+### Context
+
+Greeting Dazzle's best friend, Huskar
+<ListerSteps>
+
+- He is Dazzle's bestie
+
+- He has a huge passion with programming
+
+- His programming skill is not as good as Dazzle 
+
+- He is a loyal user of Dazzle's App 
+
+- He shared a lot of ideas about this App and wants to help Dazzle to build up this App
+
+</ListerSteps>
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    justifyContent: "start",
+    alignItems: "center",
+    paddingTop: "2em",
+    flex: 1,
+    width: "100%",
+    flexDirection:"column"
+  }}
+>
+  <img src={Dazzle_icon} alt="dazzle" />
+  <img src={Huskar_icon} style={{marginTop:"2em"}} alt="huskar" />
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>
+
+---
+
+<SectionHeadLayout title={"Example from real projects"} />
+
+---
+
+<WhiteLayout title={"Example from real projects"}>
+
+</WhiteLayout>
+
+---
+
+<SectionHeadLayout title={"Summary"} />
+
+---
+
+<WhiteLayout title={"Summary"}>
+
+</WhiteLayout>
+
+---
+
+<SectionHeadLayout title={"Practical"} />
