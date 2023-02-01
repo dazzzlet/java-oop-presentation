@@ -1,0 +1,35 @@
+{
+  "name": "java-oop-presentation",
+  "version": "1.0.0",
+  "description": "presentation and demo",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "npm install && lerna bootstrap && lerna run --stream bootstrap",
+    "start": "mdx-deck ./slides/main-slide.mdx --no-open --port 8088",
+    "build": "mdx-deck build ./slides/main-slide.mdx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truongnln2/java-oop-presentation.git"
+  },
+  "keywords": [
+    "netcompany",
+    "oop"
+  ],
+  "author": "TruongNLN, ThucPC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truongnln2/java-oop-presentation/issues"
+  },
+  "homepage": "https://github.com/truongnln2/java-oop-presentation#readme",
+  "workspaces": [
+    "slide-template"
+  ],
+  "dependencies": {
+    "netcompany-mdx-slide": "1.0.0"
+  },
+  "devDependencies": {
+    "lerna": "^6.4.1"
+  }
+}

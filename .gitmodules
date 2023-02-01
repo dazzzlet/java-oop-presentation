@@ -1,0 +1,3 @@
+[submodule "slide-template"]
+	path = slide-template
+	url = https://github.com/truongnln2/java-oop-presentation-side.git
