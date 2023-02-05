@@ -1,6 +1,34 @@
-import { WhiteLayout, SectionHeadLayout } from "netcompany-mdx-slide";
+import {
+  WhiteLayout,
+  SectionHeadLayout,
+  WhiteColumnLayout,
+  LayoutColumn,
+} from "netcompany-mdx-slide";
+
+import claimsys from "./assets/claimsys.png";
+import parkingmng from "./assets/parkingmng.png";
 
 <SectionHeadLayout title={"Practical"} />
+
+---
+
+<WhiteLayout title={"Practical"}>
+
+### Case study:
+
+- Opal tower Parking Management System
+- Netcompany Claim Application
+
+### Requirements
+
+Use object-oriented programming to build a simple expense application.
+
+- Identify actor(s) of this application.
+- Identify objects, their properties and methods name.
+- Describe relationship of objects, object hierarchy.
+- Describe detail of submit and approve function.
+
+</WhiteLayout>
 
 ---
 
@@ -28,15 +56,81 @@ Parking fee for residences and employees is a fix amount and charged monthly. Fo
 
 <WhiteLayout title={"Practical"}>
 
-## Opal tower Parking Management System
+## Netcompany Claim Application
 
-### Requirements
+**Business:** Netcompany supports multiple expenses for their employees such as: weekly breakfast, monthly transportation allowance, phone allowance ...
+After spent money on these services, employees can claim back the money from Netcompany.
 
-Use object-oriented programming to build a simple parking management application.
+In order to help finance department manages all the claims, there is a need of an IT solution.
+The application has abilities below:
 
-- Identify the customers, vehicles that application supports.
-- Identify objects, their properties and methods name.
-- Describe relationship of objects, object hierarchy.
-- Describe detail of check-in and check-out flow/steps.
+- Employees can create, input info (Draft) and submit (Submitted) the claim when they feel it's ok.
+- There are some required info on each claim:
+  - The amount of money
+  - Date of claim
+  - Image of the bill(s)
+  - Expense types: Grab, Breakfast, Dinner, phone,...
+  - Claim for whom(s)?
 
 </WhiteLayout>
+
+---
+
+<WhiteLayout title={"Practical"}>
+
+## Netcompany Claim Application
+
+**Business:** Netcompany supports multiple expenses for their employees such as: weekly breakfast, monthly transportation allowance, phone allowance ...
+After spent money on these services, employees can claim back the money from Netcompany.
+
+In order to help finance department manages all the claims, there is a need of an IT solution.
+The application has abilities below:
+
+- After claim submitted, the finance controller (associate, senior, manager) will review the claim(s), depends on the info of the claim, they can decide to approve (Approved) or reject (Rejected).
+- If the amount of money is more than 10 million, only Senior Finance Controller has permission to approve it.
+- If the amount of money is more than 100 million, only Manager Finance Controller has permission to approve it.
+
+</WhiteLayout>
+
+---
+
+<WhiteColumnLayout title={"Practical"}>
+<LayoutColumn>
+
+#### Opal tower Parking Management System
+
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    flex: "1",
+    alignSelf: "center",
+    paddingRight:"3em"
+  }}
+>
+  <img
+    src={parkingmng}
+    style={{ objectFit: "contain" }}
+    alt="parkingmng" />
+</div>
+</LayoutColumn>
+<LayoutColumn>
+
+#### Netcompany Claim Application
+
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    flex: "1",
+    alignSelf: "center",
+    paddingLeft:"3em"
+  }}
+>
+  <img 
+    src={claimsys}
+    style={{objectFit: 'contain'}}
+    alt="claimsys" />
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>

@@ -1,12 +1,56 @@
 import {
   WhiteLayout,
+  LayoutColumn,
+  WhiteColumnLayout,
   SectionHeadLayout,
 } from "netcompany-mdx-slide";
+import ex_collection_list from "./assets/ex_collection_list.png";
+import ex_java_string from "./assets/ex_java_string.png";
 
 <SectionHeadLayout title={"Example from real projects"} />
 
 ---
 
-<WhiteLayout title={"Example from real projects"}>
+<WhiteColumnLayout title={"Example from real projects"} sizes={[3,4]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
 
-</WhiteLayout>
+### Java List classes hierarchy
+
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    flexDirection:"row",
+    width:"100%",
+    justifyContent: "center"
+  }}
+>
+  <img src={ex_collection_list} alt="program_paradigms" />
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"Example from real projects"} sizes={[3,4]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
+
+### Java String class
+
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    flexDirection:"row",
+    width:"100%",
+    justifyContent: "center"
+  }}
+>
+  <img src={ex_java_string} alt="ex_java_string" />
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>

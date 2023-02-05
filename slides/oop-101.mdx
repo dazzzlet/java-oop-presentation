@@ -1,7 +1,15 @@
 import {
   WhiteLayout,
   SectionHeadLayout,
+  SwitcherSteps,
 } from "netcompany-mdx-slide";
+
+import oop_overall from "./assets/oop_overall.png";
+import oop_class_object from "./assets/oop_class_object.png";
+import oop_encap_abstraction from "./assets/oop_encap_abstraction.png";
+import oop_inheritance from "./assets/oop_inheritance.png";
+import oop_poly from "./assets/oop_poly.png";
+import oop_overall_all from "./assets/oop_overall_all.png";
 
 <SectionHeadLayout title={"OOP 101"} />
 
@@ -9,4 +17,63 @@ import {
 
 <WhiteLayout title={"OOP 101"}>
 
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    alignItems:"center",
+    paddingTop:"5em"
+  }}
+>
+
+> Object-oriented programming (OOP) is a programming paradigm based on the concept of "**objects**", which can contain data and code.
+> The data is in the form of fields (often known as **attributes** or **properties**), and the code is in the form of procedures (often known as **methods**).
+
+</div>
+</WhiteLayout>
+
+---
+
+<WhiteLayout title={"OOP 101"}>
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    alignItems:"center",
+    paddingTop:"1em"
+  }}
+>
+<SwitcherSteps>
+
+<img
+  src={oop_overall}
+  style={{ objectFit: "contain", height: "100%" }}
+  alt="oop_overall"
+/>
+<img
+  src={oop_class_object}
+  style={{ objectFit: "contain" }}
+  alt="oop_class_object"
+/>
+<img
+  src={oop_encap_abstraction}
+  style={{ objectFit: "contain" }}
+  alt="oop_encap_abstraction"
+/>
+<img
+  src={oop_inheritance}
+  style={{ objectFit: "contain" }}
+  alt="oop_inheritance"
+/>
+<img src={oop_poly} style={{ objectFit: "contain" }} alt="oop_poly" />
+<img
+  src={oop_overall_all}
+  style={{ objectFit: "contain" }}
+  alt="oop_overall_all"
+/>
+
+</SwitcherSteps>
+</div>
 </WhiteLayout>

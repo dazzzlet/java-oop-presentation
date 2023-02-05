@@ -4,6 +4,9 @@ import {
 } from "netcompany-mdx-slide";
 
 import programmingParadigms from "./assets/programming_paradigms.png";
+import program_paradigms from "./assets/program_paradigms.png";
+import imperative_approach from "./assets/imperative_approach.png";
+import functional_approach from "./assets/functional_approach.png";
 
 <SectionHeadLayout
   title={"Programming paradigms"}
@@ -12,6 +15,42 @@ import programmingParadigms from "./assets/programming_paradigms.png";
 
 ---
 
-<WhiteLayout title={"Programming paradigms"}>
+<WhiteLayout title={"Programming paradigms"} >
 
+- Is a way/style/approach of programming in order to solve a given problem
+
+- There are two groups of programming paradigm:
+
+<div
+  style={{
+    display: "flex",
+    width: "65%",
+    flexDirection: "column",
+    alignSelf: "center"
+  }}
+>
+  <img src={program_paradigms} style={{objectFit: 'contain'}} alt="program_paradigms" />
+</div>
+</WhiteLayout>
+
+---
+
+<WhiteLayout title={"Programming paradigms"} >
+
+Two groups:
+
+- Imperative: how to achieve the goal, step by step, focus on the flow
+
+- Declarative: what to achieve, focus on the desired result.
+
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    flexDirection:"row"
+  }}
+>
+  <img src={imperative_approach} style={{objectFit: 'contain'}} alt="imperative_approach" />
+  <img src={functional_approach} style={{objectFit: 'contain'}} alt="functional_approach" />
+</div>
 </WhiteLayout>
