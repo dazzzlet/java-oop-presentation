@@ -4,13 +4,51 @@ import {
   MermaidViewer,
   CodeDescription,
   WhiteColumnLayout,
+  LayoutColumn,
+  ListerSteps,
   WhiteLayout,
 } from "netcompany-mdx-slide";
 
-<WhiteLayout title={"The case study"}>
+<WhiteColumnLayout title={"The case study"} sizes={[3,4]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
 
 ### Encapsulation - The state management for the Objects
 
--
+The current project overview:
 
-</WhiteLayout>
+<ListerSteps showFirstItem={true}>
+
+- Sharing the global variables between functions
+- Easy to access and build new functions on it
+- Expose the data integrity to all functions without business logic checking
+
+</ListerSteps>
+
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    width: "100%",
+    flexDirection:"column"
+  }}
+>
+<CodeViewer>
+
+```java 20:27 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.5
+
+```
+
+```java 454:466 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.3
+
+```
+
+```java 395:421 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.5
+
+```
+
+</CodeViewer>
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>

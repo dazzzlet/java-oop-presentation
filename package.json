@@ -7,6 +7,7 @@
     "bootstrap": "npm install && lerna bootstrap && lerna run --stream bootstrap && npm run postinstall",
     "postinstall": "patch-package --patch-dir ./slide-template/patches",
     "start": "mdx-deck ./slides/main-slide.mdx --no-open --port 8088",
+    "export": "website-pdf http://localhost:1337/print -o java-oop-presentation.pdf",
     "build": "mdx-deck build ./slides/main-slide.mdx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -34,6 +35,7 @@
     "netcompany-mdx-slide": "1.0.0"
   },
   "devDependencies": {
-    "lerna": "^6.4.1"
+    "lerna": "^6.4.1",
+    "website-pdf": "^4.1.0"
   }
 }

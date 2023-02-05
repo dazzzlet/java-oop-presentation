@@ -1,9 +1,11 @@
 import {
+  CodeColumnLayout,
   CodeLayout,
   CodeViewer,
   MermaidViewer,
   CodeDescription,
   WhiteColumnLayout,
+  LayoutColumn,
   WhiteLayout,
 } from "netcompany-mdx-slide";
 
@@ -18,3 +20,28 @@ import {
 - This means that polymorphism is the method in an OOP language that does different things depending on the class of the object which calls it.
 
 </WhiteLayout>
+
+---
+
+<CodeColumnLayout title={"The case study"} subTitle={"Polymorphism"} sizes={[4,3]}>
+  
+  <LayoutStep>
+
+  ```java 23:46 file=../src/main/java/com/netcompany/core/AbstractMenu.java showNumbers zoomIn=1.3
+  ```
+
+  ```java 20:24 file=../src/main/java/com/netcompany/commonFeature/AbstractSavedBalanceSheetFeature.java showNumbers zoomIn=2
+  ```
+
+  </LayoutStep>
+  <LayoutStep>
+
+  ```java 23:46 file=../src/main/java/com/netcompany/core/AbstractMenu.java showNumbers zoomIn=1.3
+  ```
+
+  ```java 35:44 file=../src/main/java/com/netcompany/menu/newBalanceSheetMenu/NewBalanceSheetMenu.java showNumbers zoomIn=1.4
+  ```
+
+  </LayoutStep>
+
+</CodeColumnLayout>
