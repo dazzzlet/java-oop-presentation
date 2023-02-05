@@ -1,0 +1,250 @@
+import {
+  CodeLayout,
+  WhiteColumnLayout,
+  WhiteLayout,
+  SectionHeadLayout,
+  ListerSteps,
+  SwitcherSteps,
+} from "netcompany-mdx-slide";
+
+import Dazzle_icon from "./assets/Dazzle_icon.webp";
+import Huskar_icon from "./assets/Huskar_icon.webp";
+import Invoker_icon from "./assets/Invoker_icon.webp";
+
+import feature1 from "./assets/feature/feature1.png";
+import feature2 from "./assets/feature/feature2.png";
+import feature3 from "./assets/feature/feature3.png";
+import feature4 from "./assets/feature/feature4.png";
+import feature5 from "./assets/feature/feature5.png";
+import feature6 from "./assets/feature/feature6.png";
+import feature7 from "./assets/feature/feature7.png";
+
+<SectionHeadLayout title={"The case study"} />
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+
+<LayoutColumn>
+
+### Context
+
+Greeting Dazzle the Coder
+
+<ListerSteps>
+
+- A junior student who have very good programming skill
+
+- He has a cool project to manage his own GPA
+
+- He just finished his OOP course in the last semester
+
+</ListerSteps>
+
+</LayoutColumn>
+<LayoutColumn>
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "start",
+    paddingTop: "2em",
+    flex: 1,
+    width: "100%",
+  }}
+>
+  <img src={Dazzle_icon} alt="dazzle" />
+</div>
+
+</LayoutColumn>
+
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+
+<LayoutColumn>
+
+### Context
+
+Meet his GPA management app:
+
+<ListerSteps showFirstItem={true}>
+
+- A console application writen in JAVA
+- Allow student manage their courses
+- Allow student to input or clean grade for courses and view them
+- Create a GPA balance sheet base on their current GPA and their expected
+- Allow student to save manage their adjusted balance sheets
+- They can view or clean a saved sheet
+- A cool tool to planning for a new semester
+
+</ListerSteps>
+
+</LayoutColumn>
+<LayoutColumn>
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "start",
+    paddingTop: "2em",
+    flex: 1,
+    width: "100%",
+  }}
+>
+  <SwitcherSteps>
+    <img src={feature1} alt="dazzle" />
+    <img src={feature2} alt="dazzle" />
+    <img src={feature3} alt="dazzle" />
+    <img src={feature4} alt="dazzle" />
+    <img src={feature5} alt="dazzle" />
+    <img src={feature6} alt="dazzle" />
+    <img src={feature7} alt="dazzle" />
+  </SwitcherSteps>
+</div>
+
+</LayoutColumn>
+
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
+
+### Context
+
+Greeting Dazzle's best friend, Huskar
+
+<ListerSteps showFirstItem={true}>
+
+- He is Dazzle's bestie
+
+- He has a huge passion with programming
+
+- His programming skill is not as good as Dazzle
+
+- He is a loyal user of Dazzle's App
+
+- He shared a lot of ideas about this App and wants to help Dazzle to build up this App
+
+</ListerSteps>
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    justifyContent: "start",
+    alignItems: "center",
+    paddingTop: "2em",
+    flex: 1,
+    width: "100%",
+    flexDirection:"column"
+  }}
+>
+  <img src={Dazzle_icon} alt="dazzle" />
+  <img src={Huskar_icon} style={{marginTop:"2em"}} alt="huskar" />
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>
+
+---
+
+<WhiteLayout title={"The case study"}>
+
+### Context
+
+#### In the very first day, they facing some collaboration problems
+
+- It's take Dazzle a while to onboard Huskar to the project
+
+</WhiteLayout>
+
+---
+
+<CodeLayout title={"The case study"} subTitle={"Context"}>
+
+```java 586:614 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 616:644 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 665:722 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 724:746 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+```java 795:827 file=../src/main/java/com/netcompany/Main.java showNumbers
+
+```
+
+</CodeLayout>
+
+---
+
+<WhiteLayout title={"The case study"}>
+
+### Context
+
+#### In the very first day, they facing some collaboration problems
+
+- It's take Dazzle a while to onboard Huskar to the project
+
+<ListerSteps showFirstItem={true}>
+
+- There is major file conflict for every new feature they develop together
+
+- Duplicated code everywhere
+
+- **Take time to develop features concurrently**
+
+</ListerSteps>
+
+</WhiteLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
+
+### Context
+
+Dazzle and Huskar try to get help from a senior student, Invoker. He's give them some advises:
+
+- Re-organize their code so the human can read easyly.
+
+- Using OOP as a fundamental tool to refactor their project.
+
+- Conduct a human friendly code structure and arrange classes into it.
+
+**_Let follow their journey to build-up a maintainable project._**
+
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    justifyContent: "start",
+    alignItems: "center",
+    paddingTop: "2em",
+    flex: 1,
+    width: "100%",
+    flexDirection:"column"
+  }}
+>
+  <img src={Dazzle_icon} alt="dazzle" />
+  <img src={Huskar_icon} style={{marginTop:"2em"}} alt="huskar" />
+  <img src={Invoker_icon} style={{marginTop:"2em"}} alt="invoker" />
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>
