@@ -4,7 +4,8 @@
   "description": "presentation and demo",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "npm install && lerna bootstrap && lerna run --stream bootstrap",
+    "bootstrap": "npm install && lerna bootstrap && lerna run --stream bootstrap && npm run postinstall",
+    "postinstall": "patch-package --patch-dir ./slide-template/patches",
     "start": "mdx-deck ./slides/main-slide.mdx --no-open --port 8088",
     "build": "mdx-deck build ./slides/main-slide.mdx",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +24,7 @@
     "url": "https://github.com/truongnln2/java-oop-presentation/issues"
   },
   "homepage": "https://github.com/truongnln2/java-oop-presentation#readme",
+  "private": true,
   "workspaces": [
     "slide-template",
     "slide-template/code-surfer/packs/step-parser",

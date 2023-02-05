@@ -1,0 +1,575 @@
+import {
+  CodeLayout,
+  CodeViewer,
+  MermaidViewer,
+  CodeDescription,
+  WhiteColumnLayout,
+  WhiteLayout,
+} from "netcompany-mdx-slide";
+
+<WhiteLayout title={"The case study"}>
+
+### Abstraction - The foundation of the OOP
+
+- Seperate <ins>WHAT</ins> from <ins>HOW</ins>
+
+- <ins>Hide the complex</ins> behide the <ins>Abstraction</ins>
+
+- Focus on <ins>high-level idea</ins>, seperately from the <ins>low-level details</ins>
+
+</WhiteLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[3,4]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
+
+### Abstraction - The foundation of the OOP
+
+- Seperate <ins>WHAT</ins> from <ins>HOW</ins>
+
+<MermaidViewer>
+
+```mermaid
+classDiagram
+  class Menu {
+      <<interface>>
+      +MenuItem[] menuItems
+  }
+
+  class MenuItem {
+      <<interface>>
+      +String itemName
+  }
+
+  Menu--MenuItem
+```
+
+```mermaid
+classDiagram
+  class MenuItem {
+      <<interface>>
+      +String itemName
+  }
+
+  class Service {
+      <<interface>>
+  }
+
+  MenuItem--Service
+```
+
+```mermaid
+classDiagram
+  class MenuItem {
+      <<interface>>
+      +String itemName
+  }
+
+  class Service {
+      <<interface>>
+  }
+
+  class Repository {
+      <<interface>>
+  }
+
+  MenuItem--Service
+  Service--Repository
+```
+
+</MermaidViewer>
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    width: "100%",
+    flexDirection:"column"
+  }}
+>
+<CodeViewer>
+
+```java 616:635 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.5
+
+```
+
+```java 481:509 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.1
+
+```
+
+```java 636:642 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.5
+
+```
+
+</CodeViewer>
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[3,4]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
+
+### Abstraction - The foundation of the OOP
+
+- <ins>Hide the complex</ins> behide the <ins>Abstraction</ins>
+
+<MermaidViewer>
+
+```mermaid
+classDiagram
+    class Menu {
+        <<interface>>
+        +MenuItem[] menuItems
+        +launch()
+    }
+
+    class AbstractMenu {
+        <<abstract class>>
+        +launchMenuItem(int index)
+    }
+
+    Menu<|--AbstractMenu
+```
+
+```mermaid
+classDiagram
+    class Menu {
+        <<interface>>
+        +MenuItem[] menuItems
+        +launch()
+    }
+
+    class AbstractMenu {
+        <<abstract class>>
+        -checkUserChoise(String userChoise)
+        +launchMenuItem(int index)
+    }
+
+    Menu<|--AbstractMenu
+```
+
+```mermaid
+classDiagram
+    class Menu {
+        <<interface>>
+        +MenuItem[] menuItems
+        +launch()
+    }
+
+    class AbstractMenu {
+        <<abstract class>>
+        +String selectInstruction
+        -checkUserChoise(String userChoise)
+        +launchMenuItem(int index)
+    }
+
+    Menu<|--AbstractMenu
+```
+
+```mermaid
+classDiagram
+    class Menu {
+        <<interface>>
+        +String menuHeader
+        +MenuItem[] menuItems
+        +launch()
+    }
+
+    class AbstractMenu {
+        <<abstract class>>
+        +String selectInstruction
+        -checkUserChoise(String userChoise)
+        +launchMenuItem(int index)
+    }
+
+    Menu<|--AbstractMenu
+```
+
+```mermaid
+classDiagram
+    class Menu {
+        <<interface>>
+        +String menuHeader
+        +MenuItem[] menuItems
+        +launch()
+    }
+    class AbstractMenu {
+        <<abstract class>>
+        +String backItem
+        +String selectInstruction
+        -checkUserChoise(String userChoise)
+        +launchMenuItem(int index)
+    }
+
+    Menu<|--AbstractMenu
+```
+
+```mermaid
+classDiagram
+    class Menu {
+        <<interface>>
+        +String menuHeader
+        +MenuItem[] menuItems
+        +launch()
+    }
+    class AbstractMenu {
+        <<abstract class>>
+        +backItem
+        +selectInstruction
+        -checkUserChoise(String userChoise)
+        +launchMenuItem(int index)
+    }
+    class MainMenu {
+    }
+
+    Menu<|--AbstractMenu
+    AbstractMenu<|--MainMenu
+```
+
+</MermaidViewer>
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    width: "100%"
+  }}
+>
+<CodeViewer>
+
+```java 805:808 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.5
+
+```
+
+```java 287:288 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.5
+
+```
+
+```java 285 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=2
+
+```
+
+```java 802:803 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.6
+
+```
+
+```java 279:283 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.9
+
+```
+
+```java 10:30 file=../src/main/java/com/netcompany/menu/MainMenu.java zoomIn=1.5
+
+```
+
+</CodeViewer>
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[3,4]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
+<LayoutColumn>
+
+### Abstraction - The foundation of the OOP
+
+- Focus on <ins>high-level idea</ins>, seperately from the <ins>low-level details</ins>
+
+<MermaidViewer>
+
+```mermaid
+classDiagram
+
+    class MenuItem {
+        <<interface>>
+        +String itemName
+    }
+
+    class MainMenu {
+    }
+
+    class ManageGradeMenu {
+    }
+
+    class ManageCourseMenu {
+    }
+
+    class ManageBalanceSheetMenu {
+    }
+
+    class NewBalanceSheetMenu {
+    }
+
+    MainMenu--ManageGradeMenu
+    MainMenu--ManageCourseMenu
+    MainMenu--NewBalanceSheetMenu
+    MainMenu--ManageBalanceSheetMenu
+    ManageGradeMenu--|>MenuItem
+    ManageCourseMenu--|>MenuItem
+    NewBalanceSheetMenu--|>MenuItem
+    ManageBalanceSheetMenu--|>MenuItem
+
+```
+
+</MermaidViewer>
+</LayoutColumn>
+<LayoutColumn>
+<div
+  style={{
+    display: "flex",
+    flex: 1,
+    width: "100%"
+  }}
+>
+<CodeViewer>
+
+```java 801:824 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.3
+
+```
+
+</CodeViewer>
+</div>
+</LayoutColumn>
+</WhiteColumnLayout>
+
+---
+
+<WhiteLayout title={"The case study"}>
+
+### Abstraction - The foundation of the OOP
+
+- Focus on <ins>high-level idea</ins>, seperately from the <ins>low-level details</ins>
+
+<MermaidViewer>
+
+```mermaid
+classDiagram
+
+    MainMenu--ManageCourseMenu
+    MainMenu--ManageGradeMenu
+    MainMenu--NewBalanceSheetMenu
+    MainMenu--ManageBalanceSheetMenu
+
+    ManageCourseMenu--AddCourseFeature
+    ManageCourseMenu--RemoveCourseFeature
+    ManageCourseMenu--ShowCourseFeature
+
+    AddCourseFeature--|>MenuItem
+    RemoveCourseFeature--|>MenuItem
+    ShowCourseFeature--|>MenuItem
+```
+
+```mermaid
+classDiagram
+    MainMenu--ManageCourseMenu
+    MainMenu--ManageGradeMenu
+    MainMenu--NewBalanceSheetMenu
+    MainMenu--ManageBalanceSheetMenu
+
+    ManageGradeMenu--CleanGradeFeature
+    ManageGradeMenu--UpdateGradeFeature
+    ManageGradeMenu--ShowCourseFeature
+
+    CleanGradeFeature--|>MenuItem
+    UpdateGradeFeature--|>MenuItem
+    ShowCourseFeature--|>MenuItem
+```
+
+```mermaid
+classDiagram
+
+    MainMenu--ManageCourseMenu
+    MainMenu--ManageGradeMenu
+    MainMenu--NewBalanceSheetMenu
+    MainMenu--ManageBalanceSheetMenu
+
+    NewBalanceSheetMenu--AdjustBalanceSheetFeature
+    NewBalanceSheetMenu--CleanBalanceSheetAdjustmentFeature
+    NewBalanceSheetMenu--PersistBalanceSheetFeature
+    NewBalanceSheetMenu--ResetBalanceSheetFeature
+    NewBalanceSheetMenu--UpdateBalancingExpectedGpaFeature
+    NewBalanceSheetMenu--ShowBalanceSheetDetailFeature
+
+    AdjustBalanceSheetFeature--|>MenuItem
+    CleanBalanceSheetAdjustmentFeature--|>MenuItem
+    PersistBalanceSheetFeature--|>MenuItem
+    ResetBalanceSheetFeature--|>MenuItem
+    UpdateBalancingExpectedGpaFeature--|>MenuItem
+    ShowBalanceSheetDetailFeature--|>MenuItem
+```
+
+```mermaid
+classDiagram
+
+    MainMenu--ManageGradeMenu
+    MainMenu--ManageCourseMenu
+    MainMenu--NewBalanceSheetMenu
+    MainMenu--ManageBalanceSheetMenu
+
+    ManageBalanceSheetMenu--RemoveSavedBalanceSheetFeature
+    ManageBalanceSheetMenu--ShowSavedBalanceSheetFeature
+
+    RemoveSavedBalanceSheetFeature--ShowBalanceSheetDetailFeature
+    ShowSavedBalanceSheetFeature--ShowBalanceSheetDetailFeature
+
+    RemoveSavedBalanceSheetFeature--|>MenuItem
+    ShowSavedBalanceSheetFeature--|>MenuItem
+    ShowBalanceSheetDetailFeature--|>MenuItem
+
+```
+
+</MermaidViewer>
+</WhiteLayout>
+
+---
+
+<WhiteLayout title={"The case study"}>
+### Abstraction - The foundation of the OOP
+
+- Focus on <ins>high-level idea</ins>, seperately from the <ins>low-level details</ins>
+
+<MermaidViewer>
+
+```mermaid
+classDiagram
+    class GpaBalancingService {
+      - GpaBalanceSheetRepository gpaBalancingRepository
+      - CourseRepository courseRepository
+      + BalanceSheet createNewBalanceSheet(float expectedGpa)
+      + float calculateCurrentGpa(BalanceSheet balanceSheet)
+      + Float calculateNeededGrade(BalanceSheet balanceSheet)
+      + updateBalanceCourse(BalanceSheet balanceSheet, String courseCode, float adjustedGrade)
+      + saveBalanceSheet(BalanceSheet balanceSheet)
+      + removeBalanceSheet(BalanceSheet balanceSheet)
+      + BalanceSheet findBalanceSheetWithCreatedTime(long createdTime)
+      + ValidationResult checkExist(long createdTime)
+      + resetBalanceCourse(BalanceSheet currentBalanceSheet, String courseCode)
+      + resetBalanceSheet(BalanceSheet balanceSheet)
+      + BalanceSheet[] getSavedBalanceSheets()
+    }
+    class CourseService {
+      - CourseRepository courseRepository
+      + Course findCourseByCode(String code)
+      + ValidationResult checkValidCourseCode(String courseCode)
+      + ValidationResult checkNotExistCourseCode(String courseCode)
+      + ValidationResult checkExistCourseCode(String courseCode)
+      + ValidationResult checkCourseGrade(Float gradeValue)
+      + addNewCourse(Course course)
+      + updateCourse(Course course)
+      + Course removeCourse(String courseCode)
+      + cleanCourseGrade(String courseCode)
+      + Course[] getAll()
+    }
+    class CourseRepository {
+      - Course[] cached;
+      + add(Course course)
+      + update(Course course)
+      + delete(Course course)
+      + Course findByCode(String courseCode)
+      + Course[] getAll()
+    }
+    class GpaBalanceSheetRepository {
+      - BalanceSheet[] cached;
+      + add(BalanceSheet balanceSheet)
+      + update(BalanceSheet balanceSheet)
+      + delete(BalanceSheet balanceSheet)
+      + BalanceSheet findByCreateOn(long createOn)
+      + BalanceSheet[] getAll()
+    }
+
+    CourseService--CourseRepository
+    GpaBalancingService--CourseRepository
+    GpaBalancingService--GpaBalanceSheetRepository
+
+```
+
+</MermaidViewer>
+</WhiteLayout>
+
+---
+
+<WhiteColumnLayout title={"The case study"} sizes={[4,3]}>
+<LayoutColumn>
+
+### Abstraction - The foundation of the OOP
+
+- Seperate <ins>WHAT</ins> from <ins>HOW</ins>
+
+- <ins>Hide the complex</ins> behide the <ins>Abstraction</ins>
+
+- Focus on <ins>high-level idea</ins>, seperately from the <ins>low-level details</ins>
+
+</LayoutColumn>
+<LayoutColumn>
+<MermaidViewer>
+
+```mermaid
+classDiagram
+  class Menu {
+      <<interface>>
+      +String menuHeader
+      +MenuItem[] menuItems
+      +launch()
+  }
+
+  class MenuItem {
+      <<interface>>
+      +String itemName
+  }
+
+  class Service {
+      <<interface>>
+  }
+
+  class Repository {
+      <<interface>>
+  }
+
+  Menu--MenuItem
+  MenuItem--Service
+  Menu--Service
+  Service--Repository
+```
+
+</MermaidViewer>
+</LayoutColumn>
+</WhiteColumnLayout>
+
+---
+
+<WhiteLayout title={"The case study"}>
+
+### Abstraction - It's not just the domain objects
+
+<MermaidViewer>
+
+```mermaid
+classDiagram
+  class Course {
+    + String code
+    + Float grade
+  }
+
+  class BalancingCourse {
+    + Float adjustedGrade
+  }
+
+  class BalanceSheet {
+    + BalancingCourse[] courses
+    + float expectedGpa
+    + long createdOn
+    + float calculateCurrentGpa()
+    + Float calculateNeededGrade()
+  }
+
+  Course<|--BalancingCourse
+  BalanceSheet--BalancingCourse
+```
+
+</MermaidViewer>
+</WhiteLayout>
