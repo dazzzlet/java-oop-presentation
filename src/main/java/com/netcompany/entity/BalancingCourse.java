@@ -13,11 +13,17 @@ public class BalancingCourse extends Course {
         this.adjustedGrade = null;
     }
 
+    public BalancingCourse(String courseCode, Float grade, Float adjustedGrade) {
+        super(courseCode);
+        this.setGrade(grade);
+        this.adjustedGrade = adjustedGrade;
+    }
+
     public Float getAdjustedGrade() {
         return adjustedGrade;
     }
 
-    public void setAdjustedGrade(Float adjustedGrade) {
+    public void setAdjustedGrade(float adjustedGrade) {
         this.adjustedGrade = adjustedGrade;
     }
 

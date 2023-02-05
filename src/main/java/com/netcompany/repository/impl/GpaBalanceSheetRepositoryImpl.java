@@ -29,7 +29,7 @@ public class GpaBalanceSheetRepositoryImpl implements GpaBalanceSheetRepository 
         if (courseFileContent.isEmpty()) {
             return null;
         }
-        fileBalanceSheet.getCourses().clear();
+        fileBalanceSheet.clearCourses();
         String[] courseFileContentLines = courseFileContent.split("\n");
         String metaLine = courseFileContentLines[0];
         String[] metaContent = metaLine.split(" ");
@@ -39,6 +39,7 @@ public class GpaBalanceSheetRepositoryImpl implements GpaBalanceSheetRepository 
         if (noCourses != courseFileContentLines.length - 1) {
             return fileBalanceSheet;
         }
+        List<BalancingCourse> courses = new ArrayList<>();
         for (int i = 0; i < noCourses; i++) {
             String line = courseFileContentLines[i + 1];
             String[] lineContent = line.split(" ");
@@ -52,13 +53,13 @@ public class GpaBalanceSheetRepositoryImpl implements GpaBalanceSheetRepository 
                 if (StringUtils.isMatchedDecimalPattern(lineContent[2])) {
                     adjustedGrade = Float.parseFloat(lineContent[2]);
                 }
-                BalancingCourse balancingCourse = new BalancingCourse();
-                balancingCourse.setCode(courseCode);
-                balancingCourse.setGrade(grade);
-                balancingCourse.setAdjustedGrade(adjustedGrade);
-                fileBalanceSheet.getCourses().add(balancingCourse);
+                BalancingCourse balancingCourse = new BalancingCourse(
+                    courseCode, grade, adjustedGrade
+                );
+                courses.add(balancingCourse);
             }
         }
+        fileBalanceSheet.addCourses(courses);
         return fileBalanceSheet;
     }
 

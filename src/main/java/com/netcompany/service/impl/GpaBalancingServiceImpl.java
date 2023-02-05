@@ -26,7 +26,6 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
     @Override
     public BalanceSheet createNewBalanceSheet(float expectedGpa) {
         List<Course> courses = this.courseRepository.getAll();
-        BalanceSheet balanceSheet = new BalanceSheet();
         List<BalancingCourse> balancingCourses = new ArrayList<>();
         for (Course course : courses) {
             BalancingCourse balancingCourse = new BalancingCourse();
@@ -34,9 +33,8 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
             balancingCourse.copy(course);
             balancingCourses.add(balancingCourse);
         }
-        balanceSheet.setCourses(balancingCourses);
-        balanceSheet.setExpectedGpa(expectedGpa);
-        balanceSheet.setCreatedOn(Calendar.getInstance().getTimeInMillis());
+        BalanceSheet balanceSheet = new BalanceSheet(
+                balancingCourses, expectedGpa, Calendar.getInstance().getTimeInMillis());
         return balanceSheet;
     }
 
@@ -54,23 +52,6 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
                             Date.from(Instant.ofEpochMilli(createdTime))));
         }
         return null;
-    }
-
-    @Override
-    public float calculateCurrentGpa(BalanceSheet balanceSheet) {
-        float total = this.calculateTotalGrade(balanceSheet.getCourses(), null, false);
-        int noNonGradedCourses = countNonGradedCourse(balanceSheet.getCourses());
-        return total / noNonGradedCourses;
-    }
-
-    @Override
-    public Float calculateNeededGrade(BalanceSheet balanceSheet) {
-        float totalGrade = this.calculateTotalGrade(balanceSheet.getCourses(), null, true);
-        int noNonGradedCourses = countNonGradedCourse(balanceSheet.getCourses());
-        if (noNonGradedCourses == 0) {
-            return null;
-        }
-        return (balanceSheet.getExpectedGpa() * balanceSheet.getCourses().size() - totalGrade) / noNonGradedCourses;
     }
 
     @Override
@@ -99,7 +80,7 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
                             String.format("Invalid: Course grade must between 0 and %.2f", Constant.MAX_GRADE_VALUE)));
         }
         if (validationResults.isEmpty()) {
-            updatingCourse.setAdjustedGrade(adjustedGrade);
+            balanceSheet.setAdjustedGrade(courseCode, adjustedGrade);
             this.gpaBalanceSheetRepository.update(balanceSheet);
         } else {
             throw new ValidationException("", validationResults);
@@ -115,7 +96,7 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
                     new ValidationResult(String.format("Course code \"%s\" is not existed", courseCode)));
         }
         if (validationResults.isEmpty()) {
-            updatingCourse.resetAdjustedGrade();
+            balanceSheet.resetAdjustedGrade(courseCode);
             this.gpaBalanceSheetRepository.update(balanceSheet);
         } else {
             throw new ValidationException("", validationResults);
@@ -133,40 +114,6 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
         return this.gpaBalanceSheetRepository.getAll();
     }
 
-    private <T extends Course> float calculateTotalGrade(List<T> courses, Float defaultGrade, boolean includeAdjusted) {
-        float totalGrade = 0;
-        for (Course course : courses) {
-            totalGrade += this.calculateCourseGrade(course, defaultGrade, includeAdjusted);
-        }
-        return totalGrade;
-    }
-
-    private float calculateCourseGrade(Course course, Float defaultGrade, boolean includeAdjusted) {
-        Float grade = course.getGrade();
-        if (includeAdjusted && course instanceof BalancingCourse) {
-            BalancingCourse balancingCourse = (BalancingCourse) course;
-            if (balancingCourse.getAdjustedGrade() != null) {
-                grade = balancingCourse.getAdjustedGrade();
-            }
-        }
-        if (grade != null) {
-            return course.getGrade();
-        } else if (defaultGrade != null) {
-            return defaultGrade;
-        }
-        return 0;
-    }
-
-    private <T extends Course> int countNonGradedCourse(List<T> courses) {
-        int countedCourses = 0;
-        for (Course course : courses) {
-            if (course.getGrade() == null) {
-                countedCourses++;
-            }
-        }
-        return countedCourses;
-    }
-
     private BalancingCourse findBalancingCourse(BalanceSheet balanceSheet, String courseCode)
             throws ValidationException {
         if (balanceSheet == null) {
@@ -175,13 +122,7 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
         if (balanceSheet.getCourses().isEmpty()) {
             throw new ValidationException("Error! Could not adjust this course", Collections.emptyList());
         }
-        BalancingCourse existingCourse = null;
-        for (BalancingCourse course : balanceSheet.getCourses()) {
-            if (course.getCode().equalsIgnoreCase(courseCode)) {
-                existingCourse = course;
-            }
-        }
-        return existingCourse;
+        return balanceSheet.getCourse(courseCode);
     }
 
 }

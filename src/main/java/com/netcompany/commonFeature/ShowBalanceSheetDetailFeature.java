@@ -27,13 +27,13 @@ public class ShowBalanceSheetDetailFeature extends AbstractBalanceSheetFeature {
 
     public String getBalanceSheetDetailString() {
         StringBuilder stringBuilder = new StringBuilder();
-        float currentGpa = this.gpaBalancingService.calculateCurrentGpa(this.currentBalanceSheet);
+        float currentGpa = this.currentBalanceSheet.getCurrentGpa();
         Float expectedGpa = this.currentBalanceSheet.getExpectedGpa();
         stringBuilder.append(String.format("  -Current GPA: %.2f- \n", currentGpa));
         stringBuilder.append(String.format("  -Expected GPA: %.2f- \n", this.currentBalanceSheet.getExpectedGpa()));
         stringBuilder.append("     ---      \n");
         if (expectedGpa != -1) {
-            Float needAvgGrade = this.gpaBalancingService.calculateNeededGrade(this.currentBalanceSheet);
+            Float needAvgGrade = this.currentBalanceSheet.getNeededAverageGrade();
             this.getBalanceSheet(stringBuilder, needAvgGrade);
             return stringBuilder.toString();
         }

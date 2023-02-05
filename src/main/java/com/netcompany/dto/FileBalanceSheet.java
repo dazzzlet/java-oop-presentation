@@ -1,9 +1,10 @@
 package com.netcompany.dto;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.netcompany.entity.BalanceSheet;
+import com.netcompany.entity.BalancingCourse;
 
 public class FileBalanceSheet extends BalanceSheet {
     public FileBalanceSheet() {
@@ -46,5 +47,13 @@ public class FileBalanceSheet extends BalanceSheet {
         FileBalanceSheet newBalanceSheet = new FileBalanceSheet();
         newBalanceSheet.copy(this);
         return newBalanceSheet;
+    }
+
+    public void clearCourses() {
+        this.getCourses().clear();
+    }
+
+    public void addCourses(List<BalancingCourse> courses) {
+        this.getCourses().addAll(courses);
     }
 }

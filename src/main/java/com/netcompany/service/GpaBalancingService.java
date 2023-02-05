@@ -9,10 +9,6 @@ import com.netcompany.exception.ValidationException;
 public interface GpaBalancingService {
     BalanceSheet createNewBalanceSheet(float expectedGpa);
 
-    float calculateCurrentGpa(BalanceSheet balanceSheet);
-
-    Float calculateNeededGrade(BalanceSheet balanceSheet);
-
     void updateBalanceCourse(BalanceSheet balanceSheet, String courseCode, float adjustedGrade)
             throws ValidationException;
 
