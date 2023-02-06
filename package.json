@@ -8,6 +8,7 @@
     "postinstall": "patch-package --patch-dir ./slide-template/patches",
     "start": "mdx-deck ./slides/main-slide.mdx --no-open --port 8088",
     "export": "website-pdf http://localhost:1337/print -o java-oop-presentation.pdf",
+    "export:local": "website-pdf http://localhost:8088/print -o java-oop-presentation.pdf -w 1600 -h 1000",
     "build": "mdx-deck build ./slides/main-slide.mdx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

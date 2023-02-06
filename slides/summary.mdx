@@ -3,10 +3,43 @@ import {
   SectionHeadLayout,
 } from "netcompany-mdx-slide";
 
+import oo_principles from "./assets/principles-of-oo.png";
+
 <SectionHeadLayout title={"Summary"} />
 
 ---
 
 <WhiteLayout title={"Summary"}>
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "start",
+    flex: 1,
+    width: "68%",
+    alignSelf: "center"
+  }}
+>
+  <img src={oo_principles} style={{objectFit: 'contain'}} alt="code_structure" />
+</div>
+</WhiteLayout>
+
+---
+
+<WhiteLayout title={"Summary"}>
+
+- The goal of software design is to write the code that:
+  - meet the customer needs.
+  - cost-effectively change by developer.
+
+- The OOP is the guidance to design a robust application.
+
+- The Abstraction is the foundation to build other OOP principles.
+
+- The OOP is not just about design the domain objects.
+
+- Practice OOP from fresher level will build up the system thinking.
+
+- Apply OOP will make the project more complex and cost the runtime resources.
 
 </WhiteLayout>

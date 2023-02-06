@@ -62,6 +62,11 @@ classDiagram
 
 ```mermaid
 classDiagram
+  class Menu {
+      <<interface>>
+      +MenuItem[] menuItems
+  }
+
   class MenuItem {
       <<interface>>
       +String itemName
@@ -75,6 +80,8 @@ classDiagram
       <<interface>>
   }
 
+  Menu--MenuItem
+  Menu--Service
   MenuItem--Service
   Service--Repository
 ```
@@ -430,6 +437,7 @@ classDiagram
 ---
 
 <WhiteLayout title={"The case study"}>
+
 ### Abstraction - The foundation of the OOP
 
 - Focus on <ins>high-level idea</ins>, seperately from the <ins>low-level details</ins>
