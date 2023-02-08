@@ -15,6 +15,14 @@ This is the presenation material for the Seminar.
 git clone --recurse-submodules https://github.com/truongnln2/java-oop-presentation.git
 ```
 
+> If you accidentally clone the project without the command above, run the below commands
+
+```bash
+git submodule init
+git submodule update
+```
+
+
 ## Initiate the project
 ```bash
 npm run bootstrap
