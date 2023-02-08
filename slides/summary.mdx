@@ -1,7 +1,4 @@
-import {
-  WhiteLayout,
-  SectionHeadLayout,
-} from "netcompany-mdx-slide";
+import { WhiteLayout, SectionHeadLayout } from "netcompany-mdx-slide";
 
 import oo_principles from "./assets/principles-of-oo.png";
 
@@ -10,18 +7,24 @@ import oo_principles from "./assets/principles-of-oo.png";
 ---
 
 <WhiteLayout title={"Summary"}>
-<div
-  style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "start",
-    flex: 1,
-    width: "68%",
-    alignSelf: "center"
-  }}
->
-  <img src={oo_principles} style={{objectFit: 'contain'}} alt="code_structure" />
-</div>
+  <div style={{ flex: "1", position: "relative" }}>
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        alignItems: "center",
+        alignContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <img
+        src={oo_principles}
+        style={{ maxHeight: "100%" }}
+        alt="oo_principles"
+      />
+    </div>
+  </div>
 </WhiteLayout>
 
 ---
@@ -29,6 +32,7 @@ import oo_principles from "./assets/principles-of-oo.png";
 <WhiteLayout title={"Summary"}>
 
 - The goal of software design is to write the code that:
+
   - meet the customer needs.
   - cost-effectively change by developer.
 
