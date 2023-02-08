@@ -2,6 +2,8 @@
 
 This is the presenation material for the Seminar.
 
+> You can access the slide via here: https://java-oop-orientation.netlify.app
+
 ## Require applications
 | Application | version |
 | ----------- | ------- |
