@@ -39,6 +39,12 @@ public class GpaBalanceSheetRepositoryImpl implements GpaBalanceSheetRepository 
         if (noCourses != courseFileContentLines.length - 1) {
             return fileBalanceSheet;
         }
+        List<BalancingCourse> courses = readBalancingCourses(noCourses, courseFileContentLines);
+        fileBalanceSheet.addCourses(courses);
+        return fileBalanceSheet;
+    }
+
+    private static List<BalancingCourse> readBalancingCourses(int noCourses, String[] courseFileContentLines) {
         List<BalancingCourse> courses = new ArrayList<>();
         for (int i = 0; i < noCourses; i++) {
             String line = courseFileContentLines[i + 1];
@@ -54,13 +60,11 @@ public class GpaBalanceSheetRepositoryImpl implements GpaBalanceSheetRepository 
                     adjustedGrade = Float.parseFloat(lineContent[2]);
                 }
                 BalancingCourse balancingCourse = new BalancingCourse(
-                    courseCode, grade, adjustedGrade
-                );
+                        courseCode, grade, adjustedGrade);
                 courses.add(balancingCourse);
             }
         }
-        fileBalanceSheet.addCourses(courses);
-        return fileBalanceSheet;
+        return courses;
     }
 
     private static void writeCurrentBalanceSheet(
