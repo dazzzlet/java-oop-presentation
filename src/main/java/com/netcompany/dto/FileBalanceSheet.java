@@ -50,10 +50,10 @@ public class FileBalanceSheet extends BalanceSheet {
     }
 
     public void clearCourses() {
-        this.getCourses().clear();
+        this.courses.clear();
     }
 
     public void addCourses(List<BalancingCourse> courses) {
-        this.getCourses().addAll(courses);
+        this.courses.addAll(courses);
     }
 }

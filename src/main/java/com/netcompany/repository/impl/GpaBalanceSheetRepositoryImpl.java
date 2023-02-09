@@ -69,11 +69,12 @@ public class GpaBalanceSheetRepositoryImpl implements GpaBalanceSheetRepository 
             balanceSheet.setFileName(UUID.randomUUID().toString() + ".bsh");
         }
         StringBuilder sb = new StringBuilder();
-        sb.append(balanceSheet.getCourses().size());
+        List<BalancingCourse> courses = balanceSheet.getCourses();
+        sb.append(courses.size());
         sb.append(' ');
         sb.append(balanceSheet.getExpectedGpa());
         sb.append('\n');
-        for (BalancingCourse balancingCourse : balanceSheet.getCourses()) {
+        for (BalancingCourse balancingCourse : courses) {
             sb.append(balancingCourse.getCode());
             sb.append(' ');
             sb.append(balancingCourse.getGrade());

@@ -8,11 +8,11 @@ import java.util.Map;
 import com.netcompany.core.Entity;
 
 public class BalanceSheet implements Entity {
-    private List<BalancingCourse> courses;
-    private float expectedGpa;
-    private long createdOn;
-    private Float currentGpa;
-    private Float neededAverageGrade;
+    protected List<BalancingCourse> courses;
+    protected float expectedGpa;
+    protected long createdOn;
+    protected Float currentGpa;
+    protected Float neededAverageGrade;
 
     private BalanceSheet(BalanceSheet balanceSheet) {
         this.copy(balanceSheet);
@@ -61,7 +61,15 @@ public class BalanceSheet implements Entity {
     }
 
     public List<BalancingCourse> getCourses() {
+        List<BalancingCourse> courses = new ArrayList<>();
+        for (BalancingCourse balancingCourse : this.courses) {
+            courses.add(balancingCourse.clone());
+        }
         return courses;
+    }
+
+    public boolean isEmptyCourses() {
+        return this.courses.isEmpty();
     }
 
     public BalanceSheet clone() {
@@ -76,9 +84,10 @@ public class BalanceSheet implements Entity {
         this.expectedGpa = balanceSheet.getExpectedGpa();
         this.createdOn = balanceSheet.getCreatedOn();
         if (strictMode) {
+            List<BalancingCourse> sourceCourses = balanceSheet.getCourses();
             Map<String, BalancingCourse> existingCourseCode = getBalancingMap(this.courses);
-            Map<String, BalancingCourse> newCourseCode = this.getBalancingMap(balanceSheet.getCourses());
-            for (BalancingCourse balancingCourse : balanceSheet.getCourses()) {
+            Map<String, BalancingCourse> newCourseCode = this.getBalancingMap(sourceCourses);
+            for (BalancingCourse balancingCourse : sourceCourses) {
                 if (existingCourseCode.containsKey(balancingCourse.getCode())) {
                     existingCourseCode.get(balancingCourse.getCode())
                             .copy(balancingCourse);
@@ -92,10 +101,7 @@ public class BalanceSheet implements Entity {
                 }
             }
         } else {
-            this.courses = new ArrayList<>();
-            for (BalancingCourse balancingCourse : balanceSheet.getCourses()) {
-                this.courses.add(balancingCourse.clone());
-            }
+            this.courses = balanceSheet.getCourses();
         }
         this.calculateCurrentGpa();
         this.calculateNeededGrade();
@@ -118,8 +124,16 @@ public class BalanceSheet implements Entity {
     }
 
     public BalancingCourse getCourse(String courseCode) {
+        BalancingCourse existingCourse = this._getCourse(courseCode);
+        if (existingCourse != null) {
+            return existingCourse.clone();
+        }
+        return null;
+    }
+
+    private BalancingCourse _getCourse(String courseCode) {
         BalancingCourse existingCourse = null;
-        for (BalancingCourse course : this.getCourses()) {
+        for (BalancingCourse course : this.courses) {
             if (course.getCode().equalsIgnoreCase(courseCode)) {
                 existingCourse = course;
             }
@@ -128,7 +142,7 @@ public class BalanceSheet implements Entity {
     }
 
     public void setAdjustedGrade(String courseCode, float adjustedGrade) {
-        BalancingCourse course = this.getCourse(courseCode);
+        BalancingCourse course = this._getCourse(courseCode);
         if (course != null) {
             course.setAdjustedGrade(adjustedGrade);
             this.calculateNeededGrade();
@@ -136,7 +150,7 @@ public class BalanceSheet implements Entity {
     }
 
     public void resetAdjustedGrade(String courseCode) {
-        BalancingCourse course = this.getCourse(courseCode);
+        BalancingCourse course = this._getCourse(courseCode);
         if (course != null) {
             course.resetAdjustedGrade();
             this.calculateNeededGrade();
@@ -144,28 +158,25 @@ public class BalanceSheet implements Entity {
     }
 
     private void calculateCurrentGpa() {
-        float total = this.calculateTotalGrade(
-                this.getCourses(), null, false);
-        int noNonGradedCourses = countNonGradedCourse(this.getCourses());
+        float total = this.calculateTotalGrade(null, false);
+        int noNonGradedCourses = countNonGradedCourse();
         this.currentGpa = total / noNonGradedCourses;
     }
 
     private void calculateNeededGrade() {
-        float totalGrade = this.calculateTotalGrade(
-                this.getCourses(), null, true);
-        int noNonGradedCourses = countNonGradedCourse(this.getCourses());
+        float totalGrade = this.calculateTotalGrade(null, true);
+        int noNonGradedCourses = this.countNonGradedCourse();
         if (noNonGradedCourses == 0) {
             this.neededAverageGrade = null;
         } else {
-            this.neededAverageGrade = (this.getExpectedGpa() * this.getCourses().size() - totalGrade)
+            this.neededAverageGrade = (this.getExpectedGpa() * this.courses.size() - totalGrade)
                     / noNonGradedCourses;
         }
     }
 
-    private <T extends Course> float calculateTotalGrade(
-            List<T> courses, Float defaultGrade, boolean includeAdjusted) {
+    private <T extends Course> float calculateTotalGrade(Float defaultGrade, boolean includeAdjusted) {
         float totalGrade = 0;
-        for (Course course : courses) {
+        for (Course course : this.courses) {
             totalGrade += this.calculateCourseGrade(
                     course, defaultGrade, includeAdjusted);
         }
@@ -189,9 +200,9 @@ public class BalanceSheet implements Entity {
         return 0f;
     }
 
-    private <T extends Course> int countNonGradedCourse(List<T> courses) {
+    private <T extends Course> int countNonGradedCourse() {
         int countedCourses = 0;
-        for (Course course : courses) {
+        for (Course course : this.courses) {
             if (course.getGrade() == null) {
                 countedCourses++;
             }

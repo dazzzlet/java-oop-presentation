@@ -1,5 +1,7 @@
 package com.netcompany.commonFeature;
 
+import java.util.List;
+
 import com.netcompany.config.Constant;
 import com.netcompany.core.ConsoleContext;
 import com.netcompany.entity.BalancingCourse;
@@ -43,11 +45,12 @@ public class ShowBalanceSheetDetailFeature extends AbstractBalanceSheetFeature {
     private void getBalanceSheet(StringBuilder sb, Float needAvgGrade) {
         sb.append("Balance sheet detail\n");
         sb.append("         ---        \n");
-        if (this.currentBalanceSheet.getCourses().isEmpty()) {
+        List<BalancingCourse> courses = this.currentBalanceSheet.getCourses();
+        if (courses.isEmpty()) {
             sb.append("No course was inputed!\n");
             return;
         }
-        for (BalancingCourse course : this.currentBalanceSheet.getCourses()) {
+        for (BalancingCourse course : courses) {
             if (course.getGrade() == null && course.getAdjustedGrade() == null) {
                 if (needAvgGrade < 0) {
                     sb.append(

@@ -119,7 +119,7 @@ public class GpaBalancingServiceImpl implements GpaBalancingService {
         if (balanceSheet == null) {
             throw new ValidationException("Error! Could not adjust this course", Collections.emptyList());
         }
-        if (balanceSheet.getCourses().isEmpty()) {
+        if (balanceSheet.isEmptyCourses()) {
             throw new ValidationException("Error! Could not adjust this course", Collections.emptyList());
         }
         return balanceSheet.getCourse(courseCode);
