@@ -7,6 +7,8 @@ import {
   LayoutColumn,
   ListerSteps,
   WhiteLayout,
+  CodeColumnLayout,
+  LayoutStep,
 } from "netcompany-mdx-slide";
 
 <WhiteColumnLayout title={"The case study"} sizes={[3,4]} colors={['#fff','#0f2147']} texts={['#0f2147','#fff']}>
@@ -19,7 +21,9 @@ The current project overview:
 <ListerSteps showFirstItem={true}>
 
 - Sharing the global variables between functions
+
 - Easy to access and build new functions on it
+
 - Expose the data integrity to all functions without business logic checking
 
 </ListerSteps>
@@ -40,11 +44,11 @@ The current project overview:
 
 ```
 
-```java 454:466 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.3
+```java 423:453 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.3
 
 ```
 
-```java 395:421 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.5
+```java 665:690 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.2
 
 ```
 
@@ -52,3 +56,38 @@ The current project overview:
 </div>
 </LayoutColumn>
 </WhiteColumnLayout>
+
+---
+
+<CodeColumnLayout title={"The case study"} subTitle={"Polymorphism"} sizes={[4,3]}>
+  
+  <LayoutStep>
+
+```java 395:452 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1,30 skipRows=398:411,431:448
+```
+
+```java 10:15 file=../src/main/java/com/netcompany/entity/BalanceSheet.java showNumbers zoomIn=2
+```
+
+  </LayoutStep>
+  <LayoutStep>
+
+```java 395:421 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.1,30 skipRows=404:410
+```
+
+```java 10:15 file=../src/main/java/com/netcompany/entity/BalanceSheet.java showNumbers zoomIn=2 subtitle=BalanceSheet.java
+```
+
+  </LayoutStep>
+
+  <LayoutStep>
+
+```java 395:421 file=../src/main/java/com/netcompany/Main.java showNumbers zoomIn=1.1,30
+```
+
+```java 10:15 file=../src/main/java/com/netcompany/entity/BalanceSheet.java showNumbers zoomIn=2 subtitle=BalanceSheet.java
+```
+
+  </LayoutStep>
+
+</CodeColumnLayout>

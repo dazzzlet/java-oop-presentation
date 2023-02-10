@@ -29,6 +29,7 @@
   "private": true,
   "workspaces": [
     "slide-template",
+    "slide-template/code-surfer/packs/themes",
     "slide-template/code-surfer/packs/step-parser",
     "slide-template/code-surfer/packs/standalone"
   ],
